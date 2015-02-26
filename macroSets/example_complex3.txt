@@ -1,0 +1,8 @@
+compartment(cmt=1, amount=Al,volume=V1,concentration=C1)
+compartment(cmt=2, amount=Ac,volume=V2,concentration=C2)
+oral(adm=1, cmt=1, ka=ka1, p=F1)
+oral(type=2, cmt=2, ka=ka2, p=F2)
+iv(adm=3, cmt=2)
+transfer(from=1, to=2, kt=kl)
+elimination(cmt=1, k=k1)
+elimination(cmt=2, k=k2)

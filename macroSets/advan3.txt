@@ -1,0 +1,4 @@
+compartment(cmt=1, amount=Ac, volume=V, concentration=C)
+peripheral(k12, k21, amount=Ap, volume=Vp, concentration=Cp)
+iv(adm=1, cmt=1)
+elimination(cmt=1, k)

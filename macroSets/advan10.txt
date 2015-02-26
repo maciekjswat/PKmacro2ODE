@@ -1,0 +1,3 @@
+compartment(cmt=1, amount=Ac, volume=V, concentration=C)
+iv(adm=1, cmt=1)
+elimination(cmt=1, Km, Vm)

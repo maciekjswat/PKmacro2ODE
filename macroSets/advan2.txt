@@ -1,0 +1,3 @@
+compartment(cmt=1, amount=Ac, volume=V, concentration=C)
+oral(adm=1, cmt=1, ka)
+elimination(cmt=1, k)

@@ -56,3 +56,10 @@ extract_kij <- function( inputString ){    #  print('inside extract_kij')
   bindResults <- c(kArgumentName,kArgumentValue)
   return(bindResults)
 }
+
+Change 1
+
+
+
+
+

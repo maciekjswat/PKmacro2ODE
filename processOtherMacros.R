@@ -130,11 +130,11 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
     
     inputNumber <<- inputNumber + 1;
     if ( admTypeType == 'adm' ) {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration',', adm=',admType,', target=',cmtAmount[targetCompNo],sep='')   
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration',', adm=',admType,', target=',cmtAmount[targetCompNo],sep='')   
     } else if ( admTypeType == 'type') {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration',', type=',admType,', target=',cmtAmount[targetCompNo],sep='')  
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration',', type=',admType,', target=',cmtAmount[targetCompNo],sep='')  
     } else {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration, target=',cmtAmount[targetCompNo],sep='')  
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration, target=',cmtAmount[targetCompNo],sep='')  
     }
   }
 

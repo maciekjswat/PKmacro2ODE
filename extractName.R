@@ -7,7 +7,6 @@
 
 extractName <- function( inputString ){
   
-  # print('------- inside extractName -------')
   # print(inputString)
   # split
   L0 <- strsplit( inputString, "[()]" ); # print(L0)

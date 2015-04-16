@@ -17,6 +17,7 @@ E.g. to run any of the ADVAN1-4 & 10-12 editi the line
 inputMacro <- readLines('macroSets/advan11.txt', n = -1)
 * If you use RStudio just click the Run icon OR use the appropriate 
 shortcut for your OS. 
+
 I.e. 'source the current document' with  
 -- Windows & Linux: Ctrl+Shift+S	
 -- Mac: Command+Shift+S

@@ -26,9 +26,15 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
       if ((identifyArgument(inputMacro2clean,'ka')==1) && (identifyArgument(inputMacro2clean,'Ktr')==0)) {
         targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))     # print('ODE[1]') print(ODE[1]) print('ODE[targetCompNo]') print(ODE[targetCompNo])
 
-        ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ',valueOfArgument(inputMacro2clean,'ka'),'*Ad',length(cmtNumber)+1,sep='')
+        if (valueOfArgument(inputMacro2clean,'ka')=='noValue') {
+          kaArgument='ka';
+        } else {
+          kaArgument=valueOfArgument(inputMacro2clean,'ka');
+        }
+        
+        ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ',kaArgument,'*Ad',length(cmtNumber)+1,sep='')
         # create new depot compartment
-        ODE[length(cmtNumber)+1] <<- paste('dAd',length(cmtNumber)+1,'/dt= - ',valueOfArgument(inputMacro2clean,'ka'),'*Ad',length(cmtNumber)+1,sep='')
+        ODE[length(cmtNumber)+1] <<- paste('dAd',length(cmtNumber)+1,'/dt= - ',kaArgument,'*Ad',length(cmtNumber)+1,sep='')
         
         cmtAmount <<- c(cmtAmount, paste('Ad',length(cmtNumber)+1,sep = ''))   # update 'cmtAmount' vector 
         targetCompAmount <- paste('Ad',length(cmtNumber)+1,sep = '')

@@ -1,0 +1,6 @@
+compartment(cmt=1, amount=Ac, volume=V, concentration=Cc)
+iv(adm=1, cmt=1)
+absorption(adm=2, cmt=1, ka=ka2, p=F2, Tlag=timeLag2)
+absorption(adm=3, cmt=1, ka=ka3, p=F3)
+absorption(adm=4, cmt=1, ka=ka4, p=F4, Tlag=timeLag4)
+elimination(k, cmt=1) 

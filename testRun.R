@@ -3,7 +3,7 @@
 #*******************************************************************************
 # This is the starting point for the macro conversion
 # - start with selecting the approriate 'inputMacro' which refers to
-# to an approriate macro set in the 'macorSet' folder
+# to an approriate macro set in the 'macroSet' folder
 #*******************************************************************************
 
 rm(list=ls())
@@ -18,7 +18,7 @@ inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
-inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
+inputMacro <- readLines('macroSets/admin2.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();

@@ -1,11 +1,12 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # processOtherMacros.R function
 # to process OTHER macros - one marco at a time
 #*******************************************************************************
 
-processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration ){
+processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration ){
   
   inputMacro2clean <- gsub(" ","",inputString) 
   print('processOtherMacros: cleaned input inputMacro2clean')
@@ -26,12 +27,7 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
       if ((identifyArgument(inputMacro2clean,'ka')==1) && (identifyArgument(inputMacro2clean,'Ktr')==0)) {
         targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))     # print('ODE[1]') print(ODE[1]) print('ODE[targetCompNo]') print(ODE[targetCompNo])
 
-        if (valueOfArgument(inputMacro2clean,'ka')=='noValue') {
-          kaArgument='ka';
-        } else {
-          kaArgument=valueOfArgument(inputMacro2clean,'ka');
-        }
-        
+        kaArgument <- xArgument(inputMacro2clean,'ka')       
         ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ',kaArgument,'*Ad',length(cmtNumber)+1,sep='')
         # create new depot compartment
         ODE[length(cmtNumber)+1] <<- paste('dAd',length(cmtNumber)+1,'/dt= - ',kaArgument,'*Ad',length(cmtNumber)+1,sep='')
@@ -51,13 +47,13 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
         cmtAmount <<- c(cmtAmount, 'Aa')                                # update 'cmtAmount' vector 
         targetCompAmount <- paste('Dose',sep = '')
         
-        # Tk0
-      } else if ( (identifyArgument(inputMacro2clean,'Tk0')==1)) {
+         } else if ( (identifyArgument(inputMacro2clean,'Tk0')==1)) {
         targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))     # print('ODE[1]') print(ODE[1]) print('ODE[targetCompNo]') print(ODE[targetCompNo])
         
-        ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + Tk0',targetCompNo,sep='')
+        Tk0Argument <- xArgument(inputMacro2clean,'Tk0')
+        ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ZeroOrderRate',length(cmtNumber)+1,sep='')
         # create new depot compartment
-        ODE[length(cmtNumber)+1] <<- paste('dAd',length(cmtNumber)+1,'/dt= - Tk0',targetCompNo,sep='')
+        ODE[length(cmtNumber)+1] <<- paste('dAd',length(cmtNumber)+1,'/dt= - ZeroOrderRate',length(cmtNumber)+1,sep='')
         
         cmtAmount <<- c(cmtAmount, paste('Ad',length(cmtNumber)+1,sep = ''))   # update 'cmtAmount' vector 
         targetCompAmount <- paste('Ad',length(cmtNumber)+1,sep = '')
@@ -97,19 +93,39 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
     # third loop for 'Tlag' needed for the information about the 'Input' 
     for (z in 1:length(argNames[[1]])) {
       if (argNames[[1]][z] == 'Tlag') {
-        tlagValue = valueOfArgument(inputMacro2clean,'Tlag')
-        Input[inputNumber] = paste(Input[inputNumber],'; Tlag=',tlagValue, sep = '', collapse = "|")
+        
+        if (valueOfArgument(inputMacro2clean,'Tlag')=='noValue') {
+          TlagArgument='Tlag';
+        } else {
+          TlagArgument=valueOfArgument(inputMacro2clean,'Tlag');
+        }
+        Input[inputNumber] = paste(Input[inputNumber],'; Tlag=',TlagArgument, sep = '', collapse = "|")
       }
     }
     
-    # third loop for 'p' needed for the information about the 'Input' 
+    # fourth loop for 'p' needed for the information about the 'Input' 
     for (z in 1:length(argNames[[1]])) {
       if (argNames[[1]][z] == 'p') {
-        pValue = valueOfArgument(inputMacro2clean,'p')
-        Input[inputNumber] = paste(Input[inputNumber],'; p=',pValue, sep = '', collapse = "|")
+        
+        if (valueOfArgument(inputMacro2clean,'p')=='noValue') {
+          pArgument='p';
+        } else {
+          pArgument=valueOfArgument(inputMacro2clean,'p');
+        }
+        Input[inputNumber] = paste(Input[inputNumber],'; p=',pArgument, sep = '', collapse = "|")
       }
     }
     Input[inputNumber] <<- Input[inputNumber]
+    
+    # fifth loop for 'Tk0' 
+    for (z in 1:length(argNames[[1]])) {
+      if (argNames[[1]][z] == 'Tk0') {
+        # create equation for the zero order administration
+        AENumber <<- AENumber + 1;        
+        AE[AENumber] = paste('if (Ad',length(cmtNumber)+1,' > 0) { ZeroOrderRate',length(cmtNumber)+1,' = LastDoseAmount',length(cmtNumber)+1,'/',Tk0Argument,' } else { ZeroOrderRate',length(cmtNumber)+1,' = 0 }',sep='')
+      }
+    }
+    AE[AENumber] <<- AE[AENumber]
   }
   
 # IV
@@ -160,25 +176,29 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
     if ((identifyArgument(inputMacro2clean,'k')==1) && (identifyArgument(inputMacro2clean,'CL')==0  && (identifyArgument(inputMacro2clean,'Km')==0))) {
       for (i in 1:length(argNames[[1]])) {
         if (argNames[[1]][i] == 'k') {                                  # linear elimination
+          kArgument <- xArgument(inputMacro2clean,'k')
           targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))
           Aname <- cmtAmount[targetCompNo]
-          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - k*',Aname,sep='')
+          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - ',kArgument,'*',Aname,sep='')
         }
       }
     } else if ((identifyArgument(inputMacro2clean,'k')==0) && (identifyArgument(inputMacro2clean,'CL')==0 && (identifyArgument(inputMacro2clean,'Km')==1))) {
       for (i in 1:length(argNames[[1]])) {
         if (argNames[[1]][i] == 'Km') {                                 # MM elimination
+          KmArgument <- xArgument(inputMacro2clean,'Km')
+          VmArgument <- xArgument(inputMacro2clean,'Vm')
           targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))
           Aname <- cmtAmount[targetCompNo]
-          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - Vm*',Aname,'/(Km + ',Aname,')',sep='')
+          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - ',VmArgument,'*',Aname,'/(',KmArgument,' + ',Aname,')',sep='')
         }
       }
     } else if ((identifyArgument(inputMacro2clean,'k')==0) && (identifyArgument(inputMacro2clean,'CL')==1 && (identifyArgument(inputMacro2clean,'Km')==0))) {
       for (i in 1:length(argNames[[1]])) {
         if (argNames[[1]][i] == 'CL') {                                 # linear elimination
+          CLArgument <- xArgument(inputMacro2clean,'CL')
           targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))
           Aname <- cmtAmount[targetCompNo]
-          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - CL/',cmtVolume[targetCompNo],'*',Aname,sep='')
+          ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - ',CLArgument,'/',cmtVolume[targetCompNo],'*',Aname,sep='')
         } 
       }
     }
@@ -197,12 +217,14 @@ processOtherMacros <- function( inputString,ODE,AE,AENumber,Input,cmtNumber,cmtA
         cmtVolume <<- c(cmtVolume, 'noValue')                           # update 'cmtVolume' vector 
         cmtConcentration <<- c(cmtConcentration, valueOfArgument(inputMacro2clean,'concentration'))   # update 'cmtConcentration' vector   
         cmtConcentration <- c(cmtConcentration, valueOfArgument(inputMacro2clean,'concentration'))   # update 'cmtConcentration' vector   
+
+        ke0Argument <- xArgument(inputMacro2clean,'ke0')
         
         # create new effect compartment
         AENumber = AENumber + 1;
         AE[AENumber] <<- paste(Cname,'= ',Aname,'/',Vname,sep='')
         # create new effect compartment
-        ODE[length(cmtNumber)+1] <<- paste('d',cmtConcentration[length(cmtConcentration)],'/dt= ke0*(',Cname,'- Ce)',sep='')
+        ODE[length(cmtNumber)+1] <<- paste('d',cmtConcentration[length(cmtConcentration)],'/dt= ',ke0Argument,'*(',Cname,'- Ce)',sep='')
       }
     }
   }

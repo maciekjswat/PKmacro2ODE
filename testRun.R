@@ -1,7 +1,8 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
-# This is the starting point for the macro conversion
+# This is the starting point for the conversion tool PKmacro2ODEs
 # - start with selecting the approriate 'inputMacro' which refers to
 # to an approriate macro set in the 'macroSet' folder
 #*******************************************************************************
@@ -11,14 +12,15 @@ cat("\014")
 
 # ----------- HOW TO CHOSE A MODEL FROM 'macroSets' FOLDER ------------
 # CHOOSE ONE OF THE ADVAN's: advan1/2/3/4/10/11/12.txt
-inputMacro <- readLines('macroSets/advan12.txt', n = -1)
+inputMacro <- readLines('macroSets/advan10.txt', n = -1)
 # OR few more complex cases
-inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
-inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
-inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
-inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
-inputMacro <- readLines('macroSets/example10.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
+#inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
+#inputMacro <- readLines('macroSets/example10.txt', n = -1)
 #inputMacro <- readLines('macroSets/admin2.txt', n = -1)
+#inputMacro <- readLines('macroSets/test.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();
@@ -42,6 +44,7 @@ source("valueOfArgument.R", verbose=FALSE);
 source("extract_kij.R", verbose=FALSE);
 source("process_kij.R", verbose=FALSE);
 source("identifyArgument.R", verbose=FALSE);
+source("xArgument.R", verbose=FALSE);
 
 # (P1) - EXTRACT MAIN MACROS
 resultsM <- extractMain(m);
@@ -70,7 +73,7 @@ if (length(otherMacros) > 0) {
     print('');
     print(paste('------------- processing other macros:',i,'-------------'))
     oneMacro <- as.character(otherMacros[i]);
-    processOtherMacros(oneMacro,ODE,AE,AENumber,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
+    processOtherMacros(oneMacro,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
   }
 }
 

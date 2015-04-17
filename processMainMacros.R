@@ -14,10 +14,10 @@ processMainMacros <- function( inputString, ODE, cmtNumber, cmtAmount, cmtVolume
   
   output <- macroSplitFct(cleanMacro)  # print(paste('function output:',output[1]))
 
-#  amountNames <- output[2]  # print(amountNames)
-  macroName <- output[3]  # print(macroName)
-  argNames <- output[4]  # print(argNames)
-  argValues <- output[5]  # print(argValues)
+#  amountNames <- output[2]
+  macroName <- output[3] 
+  argNames <- output[4] 
+  argValues <- output[5] 
 
   k<-length(ODE)+1;
   if (macroName == 'compartment') {
@@ -34,11 +34,9 @@ processMainMacros <- function( inputString, ODE, cmtNumber, cmtAmount, cmtVolume
   
   if (macroName == 'peripheral' ) {
     # extract 'kij' argument
-    # print(''); print('processMainMacros: extract_kij')
     kij <- extract_kij(cleanMacro)
     
     # process_kij: input i,j -> output: from comp 'i', peripheral comp id 'j'
-    print('processMainMacros: process_kij')
     ijIndexes <- process_kij(kij[1]);
     fromCompIndex <- ijIndexes[1];      # usually the central compartment
     periphCompIndex <- ijIndexes[2];

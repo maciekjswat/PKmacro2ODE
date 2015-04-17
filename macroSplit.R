@@ -4,20 +4,19 @@
 #*******************************************************************************
 
 macroSplitFct <- function( inputString ){
-  # rm(list=setdiff(ls(), 'inputString'))  print(inputString)
   
   # empty list - for collection of the 'amount' attribute names  
   # required to for use in equations later when constructing rate terms
   amountNames <- list()
   
   # firsat split
-  L0 <- strsplit( inputString, "[()]" ); # print(L0)
+  L0 <- strsplit( inputString, "[()]" ); 
 
   # assign macro name
-  macroName <- L0[[1]][1]; #  print(macroName)
+  macroName <- L0[[1]][1]; 
   
   # extract the second all-pairs-string
-  prePAIRS <- strsplit(L0[[1]][2],","); #  print(prePAIRS);
+  prePAIRS <- strsplit(L0[[1]][2],","); 
 
   # extract pairs
   PAIRS <- list();
@@ -37,7 +36,7 @@ macroSplitFct <- function( inputString ){
     argValues <- c(argValues, NamesValues[[1]][2]);
     
     if (NamesValues[[1]][1] == "amount") {
-      amountNames <- c(amountNames,NamesValues[[1]][2]); #print(amountNames)
+      amountNames <- c(amountNames,NamesValues[[1]][2]); 
     }
   }
   

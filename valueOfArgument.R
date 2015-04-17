@@ -7,16 +7,16 @@
 # macroName(argName1=argValue1,argName2,argName3=argValue3,...)
 #*******************************************************************************
 
-valueOfArgument <- function( inputString, argName ){    #  print('inside valueOfArgument')
+valueOfArgument <- function( inputString, argName ){ 
     
   # first split
-  L0 <- strsplit( inputString, "[()]" );                # print(L0)
+  L0 <- strsplit( inputString, "[()]" ); 
 
   # assign macro name
-  macroName <- L0[[1]][1];                              # print(macroName)
+  macroName <- L0[[1]][1]; 
   
   # extract the second all-pairs-string
-  prePAIRS <- strsplit(L0[[1]][2],",");                 # print('prePAIRS'); print(prePAIRS)
+  prePAIRS <- strsplit(L0[[1]][2],","); 
 
   # extract pairs and put in a list
   PAIRS <- list()
@@ -24,7 +24,7 @@ valueOfArgument <- function( inputString, argName ){    #  print('inside valueOf
   {
     # remove empty space
     cleanPAIR <- gsub(" ","",prePAIRS[[1]][i]);
-    PAIRS <- c(PAIRS, cleanPAIR);                       # print('PAIRS'); print(PAIRS)
+    PAIRS <- c(PAIRS, cleanPAIR); 
   }
   
   # go over all argNames and find the 'argName'

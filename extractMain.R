@@ -12,9 +12,9 @@ extractMain <- function( m ){
   # m = macroSet
   ms <- list();
   for (i in 1:length(m)) {
-    ms[i] <- gsub(" ","",m[[i]]); # print(m[i])
+    ms[i] <- gsub(" ","",m[[i]]);
     
-    m_name <- extractName(m[[i]]); # print(m_name)  
+    m_name <- extractName(m[[i]]);
     
     if (m_name == 'compartment' || m_name == 'peripheral') {
       mainMacros <- c(mainMacros, ms[i]);

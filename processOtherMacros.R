@@ -12,12 +12,12 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
   #cat('processOtherMacros: cleaned input inputMacro2clean',"\n")
   cat(inputMacro2clean,"\n")
   
-  output <- macroSplitFct(inputMacro2clean)  #print(paste('function output:',output[1]))
+  output <- macroSplitFct(inputMacro2clean) 
 
-#  amountNames <- output[2]  # print(amountNames)
-  macroName <- output[3]  # print(macroName)
-  argNames <- output[4]  # print(argNames)
-  argValues <- output[5]  # print(argValues)
+#  amountNames <- output[2] 
+  macroName <- output[3] 
+  argNames <- output[4] 
+  argValues <- output[5] 
 
 # ORAL
   if ((macroName == 'absorption') || (macroName == 'oral')) {
@@ -37,7 +37,7 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
         
         # ka & Ktr/Mtt
       } else if ( (identifyArgument(inputMacro2clean,'ka')==1) && (identifyArgument(inputMacro2clean,'Ktr')==1)) {
-        targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))     # print('ODE[1]') print(ODE[1]) print('ODE[targetCompNo]') print(ODE[targetCompNo])
+        targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt')) 
         
         # extend Ac with 'ka*Aa' 'absorption' compartment
         ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ka*Aa',sep='')
@@ -48,7 +48,7 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
         targetCompAmount <- paste('Dose',sep = '')
         
          } else if ( (identifyArgument(inputMacro2clean,'Tk0')==1)) {
-        targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))     # print('ODE[1]') print(ODE[1]) print('ODE[targetCompNo]') print(ODE[targetCompNo])
+        targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt')) 
         
         Tk0Argument <- xArgument(inputMacro2clean,'Tk0')
         ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' + ZeroOrderRate',length(cmtNumber)+1,sep='')

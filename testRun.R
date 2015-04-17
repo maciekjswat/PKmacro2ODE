@@ -19,11 +19,11 @@ cat("\014")
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
 inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
-inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
-inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
-inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
+#inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
 
-inputMacro <- readLines('macroSets/test2.txt', n = -1)
+#inputMacro <- readLines('macroSets/test2.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();
@@ -51,9 +51,9 @@ source("xArgument.R", verbose=FALSE);
 
 # (P1) - EXTRACT MAIN MACROS
 resultsM <- extractMain(m);
-numberMain <- resultsM[1]; # print(numberMain);
+numberMain <- resultsM[1];
 endVector <- 2+as.numeric(numberMain)-1;
-mainMacros <- resultsM[2:endVector]; # print(mainMacros);
+mainMacros <- resultsM[2:endVector];
 
 # (P2) - EXTRACT OTHER MACROS
 resultsO <- extractOthers(m);
@@ -61,42 +61,45 @@ if (length(resultsO) > 0) {
   otherMacros <- resultsO;
 }
 
-# (P3) - PROCESS MAIN MACROS (compartment so far)
+# (P3) - PROCESS MAIN MACROS (compartment & peripheral)
 for (i in 1:length(mainMacros)) {
   cat('',"\n"); 
-  cat(paste('------------------- processing main macro',i,'-----------------'),"\n")
-  
+  cat(paste('----------------------- processing macro',i,'---------------------'),"\n")
   oneMacro <- as.character(mainMacros[i]);
   processMainMacros(oneMacro,ODE,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
 }
 
-# (P4) - PROCESS OTHER MACROS (oral, iv)
+# (P4) - PROCESS OTHER MACROS
 if (length(otherMacros) > 0) {
   for (i in 1:length(otherMacros)) {
     cat('',"\n");
-    cat(paste('------------------- processing other macro',i,'----------------'),"\n")
+    cat(paste('----------------------- processing macro',i+length(mainMacros),'--------------------'),"\n")
     oneMacro <- as.character(otherMacros[i]);
     processOtherMacros(oneMacro,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
   }
 }
 
 cat('',"\n")
+cat('---------------------------------------------------------------',"\n")
 cat('------------------------RESULTS--------------------------------',"\n")
 cat('---------------------------------------------------------------',"\n")
-cat('------------------------cmtNumber------------------------------',"\n")
+cat('--- cmtNumber array ---',"\n")
 cat( paste( cmtNumber, collapse = "\n" ), "\n" );  
-cat('------------------------cmtAmount------------------------------',"\n")
+cat('--- cmtAmount array  ---',"\n")
 cat( paste( cmtAmount, collapse = "\n" ), "\n" );
-cat('------------------------cmtVolume------------------------------',"\n")
+cat('--- cmtVolume array  ---',"\n")
 cat( paste( cmtVolume, collapse = "\n" ), "\n" );
-cat('------------------------cmtConcentration-----------------------',"\n")
+cat('--- cmtConcentration array  ---',"\n")
 cat( paste( cmtConcentration, collapse = "\n" ), "\n" );
 cat('------------------------ODE------------------------------------',"\n")
-cat( paste( ODE, collapse = "\n" ), "\n" );  
-cat('------------------------AE-------------------------------------')
-cat(AE,"\n\n");
+cat( paste( ODE, collapse = "\n" ), "\n" );
+cat('------------------------AE-------------------------------------',"\n")
+cat( paste( AE, collapse = "\n" ), "\n" );  
 cat('------------------------Administrations------------------------',"\n")
 cat( paste( Input, collapse = "\n" ), "\n\n" );
 cat('------------------------Input Check----------------------------',"\n")
 cat( paste( m, collapse = "\n" ), "\n" ); 
+cat('',"\n")
+cat('------------------------HAPPY END------------------------------',"\n")
+cat('---------------------------------------------------------------',"\n")
 

@@ -6,19 +6,19 @@
 # expressions from a peripheral macro
 #*******************************************************************************
 
-extract_kij <- function( inputString ){    #  print('inside extract_kij')
+extract_kij <- function( inputString ){ 
     
   # first split
-  L0 <- strsplit( inputString, "[()]" );                # print(L0)
+  L0 <- strsplit( inputString, "[()]" );
 
   # assign macro name
-  macroName <- L0[[1]][1];                              # print(macroName)
+  macroName <- L0[[1]][1]; 
 #  if (macroName == 'peripheral') {
 #    print('correct peripheral macro')
 #  }
   
   # extract the second all-pairs-string
-  prePAIRS <- strsplit(L0[[1]][2],",");                 # print('prePAIRS'); print(prePAIRS)
+  prePAIRS <- strsplit(L0[[1]][2],","); 
 
   # extract pairs and put in a list
   PAIRS <- list()
@@ -26,7 +26,7 @@ extract_kij <- function( inputString ){    #  print('inside extract_kij')
   {
     # remove empty space
     cleanPAIR <- gsub(" ","",prePAIRS[[1]][i]);
-    PAIRS <- c(PAIRS, cleanPAIR);                       # print('PAIRS'); print(PAIRS)
+    PAIRS <- c(PAIRS, cleanPAIR); 
   }
 
   hitFlag = 0

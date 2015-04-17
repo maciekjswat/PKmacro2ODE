@@ -18,16 +18,19 @@ inputMacro <- readLines('macroSets/advan11.txt', n = -1)
 * If you use RStudio just click the Run icon OR use the appropriate 
 shortcut for your OS. I.e. 'source the current document' under 
 Windows & Linux: Ctrl+Shift+S, under Mac: Command+Shift+S.
-
-More on:
+* For more shortcuts visit:
 https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts 
 
 ### Example:
-To run the set of PK macros corresponding to ADVAN12 edit the line 15:
+The set of PK macros corresponding to ADVAN12 reads
 ```
-inputMacro <- readLines('macroSets/advan12.txt', n = -1).
+compartment(cmt=1, amount=Ac, volume=V, concentration=C)
+peripheral(k12, k21, amount=Ap1, volume=Vp1, concentration=Cp1)
+peripheral(k13, k31, amount=Ap2, volume=Vp2, concentration=Cp2)
+oral(adm=1, cmt=1, ka)
+elimination(cmt=1, k) 
 ```
-The translation results of this macro into ODEs and information about 
+The translation results into ODEs and information about 
 the input and dataset connectivity will be will be displayed as:
 ```
 ----------------------- processing macro 1 -------------------- 
@@ -77,11 +80,5 @@ dAd4/dt= - ka*Ad4
  
 ------------------------Administrations------------------------ 
 Input[1]: ORAL administration, adm=1, target=Ad4 
-
-------------------------Input Check---------------------------- 
-compartment(cmt=1, amount=Ac, volume=V, concentration=C)
-peripheral(k12, k21, amount=Ap1, volume=Vp1, concentration=Cp1)
-peripheral(k13, k31, amount=Ap2, volume=Vp2, concentration=Cp2)
-oral(adm=1, cmt=1, ka)
-elimination(cmt=1, k) 
+...
 ```

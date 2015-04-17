@@ -1,16 +1,16 @@
 # PKmacro2ODE
-## https://github.com/maciekjswat/PKmacro2ODE
+### https://github.com/maciekjswat/PKmacro2ODE
 
 Set of R scripts for the conversion of PK macros to 
 * plain text ODEs
 * information about Administration/Input not captured by equations
 
-Warnings/Limitations
+### Warnings/Limitations
 * PKmacro2ODE handles well-defined macros only
 * No validation is build in yet
 * Macros are assumed to be formulated without defaults
 
-Quick Intro
+### Quick Intro
 * The strating point is the 'testRun.R' file.
 * Select the appropriate model located in the 'macroSets' subfolder
 by editing the lines 12-21.
@@ -23,15 +23,12 @@ Windows & Linux: Ctrl+Shift+S, under Mac: Command+Shift+S.
 More on:
 https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts 
 
-Example:
+### Example:
 To run PK macro corresponding to ADVAN12 edit the line 15:
 inputMacro <- readLines('macroSets/advan12.txt', n = -1).
 
-The rulults are displayed as:
+The results are displayed as:
 
---------------------------------------------------------------- 
-------------------------RESULTS-------------------------------- 
---------------------------------------------------------------- 
 --- cmtNumber array --- 
 1
 2

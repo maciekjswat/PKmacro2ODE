@@ -177,6 +177,7 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
       for (i in 1:length(argNames[[1]])) {
         if (argNames[[1]][i] == 'k') {                                  # linear elimination
           kArgument <- xArgument(inputMacro2clean,'k')
+          cat(kArgument)
           targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))
           Aname <- cmtAmount[targetCompNo]
           ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - ',kArgument,'*',Aname,sep='')

@@ -23,11 +23,31 @@ More on:
 https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts 
 
 ### Example:
-To run PK macro corresponding to ADVAN12 edit the line 15:
-inputMacro <- readLines('macroSets/advan12.txt', n = -1).
-
-The results are displayed as:
+To run the set of PK macros corresponding to ADVAN12 edit the line 15:
 ```
+inputMacro <- readLines('macroSets/advan12.txt', n = -1).
+```
+The translation results of this macro into ODEs and information about 
+the input and dataset connectivity will be will be displayed as:
+```
+----------------------- processing macro 1 -------------------- 
+compartment(cmt=1,amount=Ac,volume=V,concentration=C) 
+ 
+----------------------- processing macro 2 -------------------- 
+peripheral(k12,k21,amount=Ap1,volume=Vp1,concentration=Cp1) 
+ 
+----------------------- processing macro 3 -------------------- 
+peripheral(k13,k31,amount=Ap2,volume=Vp2,concentration=Cp2) 
+ 
+----------------------- processing macro 4 -------------------- 
+oral(adm=1,cmt=1,ka) 
+ 
+----------------------- processing macro 5 -------------------- 
+elimination(cmt=1,k) 
+ 
+--------------------------------------------------------------- 
+------------------------RESULTS-------------------------------- 
+--------------------------------------------------------------- 
 --- cmtNumber array --- 
 1
 2

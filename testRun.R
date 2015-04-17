@@ -12,13 +12,13 @@ cat("\014")
 
 # ----------- HOW TO CHOSE A MODEL FROM 'macroSets' FOLDER ------------
 # CHOOSE ONE OF THE ADVAN's: advan1/2/3/4/10/11/12.txt
-#inputMacro <- readLines('macroSets/advan12.txt', n = -1)
+inputMacro <- readLines('macroSets/advan12.txt', n = -1)
 # OR few more complex cases
 #inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
 #inputMacro <- readLines('macroSets/example9.txt', n = -1)
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
-inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
@@ -64,7 +64,7 @@ if (length(resultsO) > 0) {
 # (P3) - PROCESS MAIN MACROS (compartment & peripheral)
 for (i in 1:length(mainMacros)) {
   cat('',"\n"); 
-  cat(paste('----------------------- processing macro',i,'---------------------'),"\n")
+  cat(paste('----------------------- processing macro',i,'--------------------'),"\n")
   oneMacro <- as.character(mainMacros[i]);
   processMainMacros(oneMacro,ODE,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
 }

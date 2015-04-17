@@ -1,7 +1,7 @@
 # PKmacro2ODE
 
 Set of R scripts for the conversion of PK macros to 
-* plain text ODEs
+* plain text ordinary differential equations (ODE) and algebraic equations (AE)
 * information about Administration/Input not captured by equations
 
 ### Warnings/Limitations
@@ -19,8 +19,7 @@ E.g. to run any of the ADVAN1-4 & 10-12 edit the line 15, e.g.
 * If you use RStudio just click the Run icon or use the appropriate 
 shortcut for your OS. To 'source the current document' under 
 Windows & Linux use `Ctrl+Shift+S`, under Mac `Command+Shift+S`.
-* For more shortcuts visit:
-https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts 
+(https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts)
 
 ### Example:
 The set of PK macros corresponding to ADVAN12 reads

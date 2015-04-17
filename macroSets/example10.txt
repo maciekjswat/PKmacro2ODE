@@ -1,4 +1,4 @@
 compartment(cmt=1, amount=Ac, concentration=Cc, volume=V) 
 oral(adm=1, cmt=1, Tk0, p=F0 ) 
-oral(adm=2, cmt=1, ka, Tlag=Tk0, p=1-F0) 
+oral(adm=2, cmt=1, ka, Tlag=Tlag2, p=1-F0) 
 elimination(cmt=1, k) 

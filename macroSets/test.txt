@@ -1,6 +1,3 @@
 compartment(cmt=1, amount=Ac, concentration=Cc, volume=V)
-compartment(cmt=2, amount=Al, concentration=Cc2, volume=V2)
-oral(adm=1, cmt=1, Tk0, p )
-oral(adm=2, cmt=2, Tk0=TK02, p=p2 )
-elimination(cmt=1, k=k1)
-elimination(cmt=2, k=kfsafasf)
+oral(adm=1, cmt=1, Tk0 )
+elimination(cmt=1, k )

@@ -9,8 +9,8 @@
 processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration ){
   
   inputMacro2clean <- gsub(" ","",inputString) 
-  print('processOtherMacros: cleaned input inputMacro2clean')
-  print(inputMacro2clean)
+  cat('processOtherMacros: cleaned input inputMacro2clean',"\n")
+  cat(inputMacro2clean,"\n")
   
   output <- macroSplitFct(inputMacro2clean)  #print(paste('function output:',output[1]))
 
@@ -152,11 +152,11 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
     
     inputNumber <<- inputNumber + 1;
     if ( admTypeType == 'adm' ) {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration',', adm=',admType,', target=',cmtAmount[targetCompNo],sep='')   
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration',', adm=',admType,', target=',cmtAmount[targetCompNo],sep='')   
     } else if ( admTypeType == 'type') {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration',', type=',admType,', target=',cmtAmount[targetCompNo],sep='')  
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration',', type=',admType,', target=',cmtAmount[targetCompNo],sep='')  
     } else {
-      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV bolus administration, target=',cmtAmount[targetCompNo],sep='')  
+      Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration, target=',cmtAmount[targetCompNo],sep='')  
     }
   }
 

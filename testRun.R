@@ -12,15 +12,15 @@ cat("\014")
 
 # ----------- HOW TO CHOSE A MODEL FROM 'macroSets' FOLDER ------------
 # CHOOSE ONE OF THE ADVAN's: advan1/2/3/4/10/11/12.txt
-inputMacro <- readLines('macroSets/advan10.txt', n = -1)
+#inputMacro <- readLines('macroSets/advan12.txt', n = -1)
 # OR few more complex cases
-#inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
-#inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
-#inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
+#inputMacro <- readLines('macroSets/example9.txt', n = -1)
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
-#inputMacro <- readLines('macroSets/admin2.txt', n = -1)
-#inputMacro <- readLines('macroSets/test.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
+inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
+inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
+inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();
@@ -77,25 +77,34 @@ if (length(otherMacros) > 0) {
   }
 }
 
-print('');
-print('------------------------------------------------------')
-print('------------------RESULTS-----------------------------')
-print('------------------------------------------------------')
-#print('------------------cmtNumber---------------------------')
+cat('------------------------------------------------------',"\n")
+cat('------------------RESULTS-----------------------------',"\n")
+cat('------------------------------------------------------',"\n\n")
+#print('------------------cmtNumber---------------------------',"\n")
 #print(cmtNumber); 
-#print('------------------cmtAmount---------------------------')
+#print('------------------cmtAmount---------------------------',"\n")
 #print(cmtAmount); 
-#print('------------------cmtVolume---------------------------')
+#print('------------------cmtVolume---------------------------',"\n")
 #print(cmtVolume); 
-#print('------------------cmtConcentration--------------------')
-#print(cmtConcentration);
-print('------------------ODE---------------------------------')
-print(ODE);
-print('------------------AE----------------------------------')
-print(AE);
-print('------------------Administrations---------------------')
-print(Input);
-print('------------------Input Check-------------------------')
+#print('------------------cmtConcentration--------------------',"\n")
+#print(cmtConcentration,"\n");
+cat('------------------ODE---------------------------------',"\n")
+for (i in 1:length(ODE)) {
+  cat( paste( ODE[i], collapse = "\n" ), "\n" );  
+} 
+cat('------------------AE----------------------------------')
+cat(AE,"\n\n");
+cat('------------------Administrations---------------------',"\n")
+cat( paste( Input, collapse = "\n" ), "\n\n" );
+cat('------------------Input Check-------------------------',"\n")
 for (i in 1:length(m)) {
-  print(m[[i]])
+  cat( paste( m[i], collapse = "\n" ), "\n" ); 
 }
+
+
+
+
+
+
+
+

@@ -92,22 +92,11 @@ cat( paste( cmtVolume, collapse = "\n" ), "\n" );
 cat('------------------------cmtConcentration-----------------------',"\n")
 cat( paste( cmtConcentration, collapse = "\n" ), "\n" );
 cat('------------------------ODE------------------------------------',"\n")
-for (i in 1:length(ODE)) {
-  cat( paste( ODE[i], collapse = "\n" ), "\n" );  
-} 
+cat( paste( ODE, collapse = "\n" ), "\n" );  
 cat('------------------------AE-------------------------------------')
 cat(AE,"\n\n");
 cat('------------------------Administrations------------------------',"\n")
 cat( paste( Input, collapse = "\n" ), "\n\n" );
 cat('------------------------Input Check----------------------------',"\n")
-for (i in 1:length(m)) {
-  cat( paste( m[i], collapse = "\n" ), "\n" ); 
-}
-
-
-
-
-
-
-
+cat( paste( m, collapse = "\n" ), "\n" ); 
 

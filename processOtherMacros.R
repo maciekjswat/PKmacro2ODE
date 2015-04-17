@@ -122,7 +122,7 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
       if (argNames[[1]][z] == 'Tk0') {
         # create equation for the zero order administration
         AENumber <<- AENumber + 1;        
-        AE[AENumber] = paste('if (Ad',length(cmtNumber)+1,' > 0) { ZeroOrderRate',length(cmtNumber)+1,' = LastDoseAmount',length(cmtNumber)+1,'/',Tk0Argument,' } else { ZeroOrderRate',length(cmtNumber)+1,' = 0 }',sep='')
+        AE[AENumber] = paste('if (Ad',length(cmtNumber)+1,' > 0) { ZeroOrderRate',length(cmtNumber)+1,' = LastDoseAmountToAd',length(cmtNumber)+1,'/',Tk0Argument,' } else { ZeroOrderRate',length(cmtNumber)+1,' = 0 }',sep='')
       }
     }
     AE[AENumber] <<- AE[AENumber]

@@ -9,7 +9,7 @@
 processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration ){
   
   inputMacro2clean <- gsub(" ","",inputString) 
-  cat('processOtherMacros: cleaned input inputMacro2clean',"\n")
+  #cat('processOtherMacros: cleaned input inputMacro2clean',"\n")
   cat(inputMacro2clean,"\n")
   
   output <- macroSplitFct(inputMacro2clean)  #print(paste('function output:',output[1]))
@@ -165,9 +165,10 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
     for (i in 1:length(argNames[[1]])) {
       toCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'to'))
       fromCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'from'))
-      transfareRate <- valueOfArgument(inputMacro2clean,'kt')
-      ODE[toCompNo] <<- paste(ODE[toCompNo],' + ',transfareRate,'*',cmtAmount[fromCompNo],sep='')
-      ODE[fromCompNo] <<- paste(ODE[fromCompNo],' - ',transfareRate,'*',cmtAmount[fromCompNo],sep='')
+      #transfareRate <- valueOfArgument(inputMacro2clean,'kt')
+      ktArgument <- xArgument(inputMacro2clean,'kt')
+      ODE[toCompNo] <<- paste(ODE[toCompNo],' + ',ktArgument,'*',cmtAmount[fromCompNo],sep='')
+      ODE[fromCompNo] <<- paste(ODE[fromCompNo],' - ',ktArgument,'*',cmtAmount[fromCompNo],sep='')
     }
   }
   
@@ -177,7 +178,6 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
       for (i in 1:length(argNames[[1]])) {
         if (argNames[[1]][i] == 'k') {                                  # linear elimination
           kArgument <- xArgument(inputMacro2clean,'k')
-          cat(kArgument)
           targetCompNo <- as.numeric(valueOfArgument(inputMacro2clean,'cmt'))
           Aname <- cmtAmount[targetCompNo]
           ODE[targetCompNo] <<- paste(ODE[targetCompNo], ' - ',kArgument,'*',Aname,sep='')

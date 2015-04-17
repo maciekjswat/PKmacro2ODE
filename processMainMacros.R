@@ -8,9 +8,9 @@
 
 processMainMacros <- function( inputString, ODE, cmtNumber, cmtAmount, cmtVolume, cmtConcentration ){
   
-  print('processMainMacros: processing cleaned input cleanMacro')
+  #cat('processMainMacros: processing cleaned input cleanMacro',"\n")
   cleanMacro <- gsub(" ","",inputString) 
-  print(cleanMacro)
+  cat(cleanMacro,"\n")
   
   output <- macroSplitFct(cleanMacro)  # print(paste('function output:',output[1]))
 

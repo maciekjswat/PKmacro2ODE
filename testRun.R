@@ -21,6 +21,9 @@ cat("\014")
 inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
 inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
 inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
+inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
+
+inputMacro <- readLines('macroSets/test2.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();
@@ -60,8 +63,8 @@ if (length(resultsO) > 0) {
 
 # (P3) - PROCESS MAIN MACROS (compartment so far)
 for (i in 1:length(mainMacros)) {
-  print(''); 
-  print(paste('------------- processing main macros:',i,'--------------'))
+  cat('',"\n"); 
+  cat(paste('------------------- processing main macro',i,'-----------------'),"\n")
   
   oneMacro <- as.character(mainMacros[i]);
   processMainMacros(oneMacro,ODE,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
@@ -70,33 +73,33 @@ for (i in 1:length(mainMacros)) {
 # (P4) - PROCESS OTHER MACROS (oral, iv)
 if (length(otherMacros) > 0) {
   for (i in 1:length(otherMacros)) {
-    print('');
-    print(paste('------------- processing other macros:',i,'-------------'))
+    cat('',"\n");
+    cat(paste('------------------- processing other macro',i,'----------------'),"\n")
     oneMacro <- as.character(otherMacros[i]);
     processOtherMacros(oneMacro,ODE,AE,Input,cmtNumber,cmtAmount,cmtVolume,cmtConcentration)
   }
 }
 
-cat('------------------------------------------------------',"\n")
-cat('------------------RESULTS-----------------------------',"\n")
-cat('------------------------------------------------------',"\n\n")
-#print('------------------cmtNumber---------------------------',"\n")
-#print(cmtNumber); 
-#print('------------------cmtAmount---------------------------',"\n")
-#print(cmtAmount); 
-#print('------------------cmtVolume---------------------------',"\n")
-#print(cmtVolume); 
-#print('------------------cmtConcentration--------------------',"\n")
-#print(cmtConcentration,"\n");
-cat('------------------ODE---------------------------------',"\n")
+cat('',"\n")
+cat('------------------------RESULTS--------------------------------',"\n")
+cat('---------------------------------------------------------------',"\n")
+cat('------------------------cmtNumber------------------------------',"\n")
+cat( paste( cmtNumber, collapse = "\n" ), "\n" );  
+cat('------------------------cmtAmount------------------------------',"\n")
+cat( paste( cmtAmount, collapse = "\n" ), "\n" );
+cat('------------------------cmtVolume------------------------------',"\n")
+cat( paste( cmtVolume, collapse = "\n" ), "\n" );
+cat('------------------------cmtConcentration-----------------------',"\n")
+cat( paste( cmtConcentration, collapse = "\n" ), "\n" );
+cat('------------------------ODE------------------------------------',"\n")
 for (i in 1:length(ODE)) {
   cat( paste( ODE[i], collapse = "\n" ), "\n" );  
 } 
-cat('------------------AE----------------------------------')
+cat('------------------------AE-------------------------------------')
 cat(AE,"\n\n");
-cat('------------------Administrations---------------------',"\n")
+cat('------------------------Administrations------------------------',"\n")
 cat( paste( Input, collapse = "\n" ), "\n\n" );
-cat('------------------Input Check-------------------------',"\n")
+cat('------------------------Input Check----------------------------',"\n")
 for (i in 1:length(m)) {
   cat( paste( m[i], collapse = "\n" ), "\n" ); 
 }

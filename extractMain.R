@@ -1,5 +1,6 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # extractMain.R - function which 
 # extracts the macro names from an array of macros 'm'

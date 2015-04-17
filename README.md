@@ -1,4 +1,5 @@
 # PKmacro2ODE
+# https://github.com/maciekjswat/PKmacro2ODE
 
 Set of R scripts for the conversion of PK macros to 
 * plain text ODEs

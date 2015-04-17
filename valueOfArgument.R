@@ -1,5 +1,6 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # valueOfArgument.R - function returns 'argValue' for each
 # 'argName' in a macro, if assigned, e.g. 

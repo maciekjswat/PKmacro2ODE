@@ -1,5 +1,6 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # processMainMacros.R function
 # to process main macros - one marco at a time

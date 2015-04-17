@@ -1,5 +1,6 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # extractName.R - function which 
 # extracts and returns macro names for any macro

@@ -1,5 +1,6 @@
 #*******************************************************************************
 # Copyright (C) 2015 EMBL-EBI - All rights reserved.
+# https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # xArgument.R - function returns 'argValue' or 'argName' - a bit repetitive 
 # as similar to 'valueOfArgument' function but useful in some cases.

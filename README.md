@@ -12,7 +12,8 @@ Set of R scripts for the conversion of PK macros to
 ### Quick Intro
 * The strating point is the 'testRun.R' file.
 * Select the appropriate model located in the 'macroSets' subfolder
-by editing the lines 12-21.
+by editing the lines 12-21 - all of the examples are described in the 
+PDF document.
 E.g. to run any of the ADVAN1-4 & 10-12 edit the line 15, e.g.
 `inputMacro <- readLines('macroSets/advan11.txt', n = -1)`
 * If you use RStudio just click the Run icon or use the appropriate 

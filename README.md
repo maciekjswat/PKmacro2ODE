@@ -27,7 +27,7 @@ To run PK macro corresponding to ADVAN12 edit the line 15:
 inputMacro <- readLines('macroSets/advan12.txt', n = -1).
 
 The results are displayed as:
-'''
+```
 --- cmtNumber array --- 
 1
 2
@@ -64,4 +64,4 @@ peripheral(k12, k21, amount=Ap1, volume=Vp1, concentration=Cp1)
 peripheral(k13, k31, amount=Ap2, volume=Vp2, concentration=Cp2)
 oral(adm=1, cmt=1, ka)
 elimination(cmt=1, k) 
-'''
+```

@@ -3,8 +3,8 @@
 # https://github.com/maciekjswat/PKmacro2ODE
 #*******************************************************************************
 # This is the starting point for the conversion tool PKmacro2ODEs
-# - start with selecting the approriate 'inputMacro' which refers to
-# to an approriate macro set in the 'macroSet' folder
+# - start with selecting the 'inputMacro', lines 13-24, which refers to
+# to an approriate macro set in the 'macroSet' folder and 'run' the script
 #*******************************************************************************
 
 rm(list=ls())
@@ -12,18 +12,17 @@ cat("\014")
 
 # ----------- HOW TO CHOSE A MODEL FROM 'macroSets' FOLDER ------------
 # CHOOSE ONE OF THE ADVAN's: advan1/2/3/4/10/11/12.txt
-inputMacro <- readLines('macroSets/advan12.txt', n = -1)
+#inputMacro <- readLines('macroSets/advan12.txt', n = -1)
 # OR few more complex cases
 #inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
 #inputMacro <- readLines('macroSets/example9.txt', n = -1)
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
-#inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
+inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
-
-#inputMacro <- readLines('macroSets/test2.txt', n = -1)
+inputMacro <- readLines('macroSets/exampleC2.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();
@@ -35,7 +34,7 @@ inputNumber = 0; Input <- list();
 
 for (i in 1: length(inputMacro)) {
   m <- c(m,inputMacro[i])
-}
+} 
 
 source("macroSplit.R", verbose=FALSE);
 source("extractName.R", verbose=FALSE);

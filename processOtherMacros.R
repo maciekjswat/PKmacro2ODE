@@ -172,7 +172,7 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
       }
     }
     
-    # fourth loop for 'p' needed for the information about the 'Input' 
+    # same as in 'oral': loop for 'p' needed for the information about the 'Input' 
     for (z in 1:length(argNames[[1]])) {
       if (argNames[[1]][z] == 'p') {
         

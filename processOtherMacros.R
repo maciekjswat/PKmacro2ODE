@@ -158,6 +158,33 @@ processOtherMacros <- function( inputString,ODE,AE,Input,cmtNumber,cmtAmount,cmt
     } else {
       Input[inputNumber] <<- paste('Input[',inputNumber,']: IV administration, target=',cmtAmount[targetCompNo],sep='')  
     }
+    
+    # same as in 'oral': loop for 'Tlag' needed for the information about the 'Input' 
+    for (z in 1:length(argNames[[1]])) {
+      if (argNames[[1]][z] == 'Tlag') {
+        
+        if (valueOfArgument(inputMacro2clean,'Tlag')=='noValue') {
+          TlagArgument='Tlag';
+        } else {
+          TlagArgument=valueOfArgument(inputMacro2clean,'Tlag');
+        }
+        Input[inputNumber] = paste(Input[inputNumber],'; Tlag=',TlagArgument, sep = '', collapse = "|")
+      }
+    }
+    
+    # fourth loop for 'p' needed for the information about the 'Input' 
+    for (z in 1:length(argNames[[1]])) {
+      if (argNames[[1]][z] == 'p') {
+        
+        if (valueOfArgument(inputMacro2clean,'p')=='noValue') {
+          pArgument='p';
+        } else {
+          pArgument=valueOfArgument(inputMacro2clean,'p');
+        }
+        Input[inputNumber] = paste(Input[inputNumber],'; p=',pArgument, sep = '', collapse = "|")
+      }
+    }
+    Input[inputNumber] <<- Input[inputNumber]
   }
 
 # TRANSFER

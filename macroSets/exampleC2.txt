@@ -1,5 +1,5 @@
 compartment(cmt=1, volume=V, concentration=Cc,amount=Ac) 
-iv(adm=1, cmt=1, p=0.1, Tlag)
+iv(adm=1, cmt=1, p=0.1, Tlag=0.1)
 oral(adm=2, cmt=1, Tk0) 
 elimination(cmt=1, k) 
 peripheral(k12, k21, amount=Ap2, volume=Vp2, concentration=Cc2) 

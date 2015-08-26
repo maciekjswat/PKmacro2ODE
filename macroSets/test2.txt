@@ -1,0 +1,5 @@
+compartment(cmt=1, amount=Ac, volume=V, concentration=Cc)
+compartment(cmt=2, amount=Au, volume=Vu, concentration=Cu)
+transfer(from=1, to=2, kt=k*(r+F))
+oral(adm=1, cmt=1, ka, p, Tlag)
+elimination(cmt=1, k=k*(1-FO))

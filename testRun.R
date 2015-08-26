@@ -19,10 +19,11 @@ cat("\014")
 #inputMacro <- readLines('macroSets/example10.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_1comp_kaKtrMtt_k.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_oneIVthreeORAL.txt', n = -1)
-inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
+#inputMacro <- readLines('macroSets/example_complex2.txt', n = -1)
 #inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
-inputMacro <- readLines('macroSets/exampleC2.txt', n = -1)
+#inputMacro <- readLines('macroSets/exampleC2.txt', n = -1)
+inputMacro <- readLines('macroSets/useCase7.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();

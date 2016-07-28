@@ -1,0 +1,3 @@
+compartment(cmt=8, amount=CENTRAL, volume=V, concentration=C)
+elimination(cmt=8, V=V, CL=CL)
+absorption(cmt=8, p=F1, adm=7, Tlag=TLAG, ka=KA)

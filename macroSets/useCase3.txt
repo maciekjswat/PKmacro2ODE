@@ -1,0 +1,4 @@
+compartment(cmt=1, amount=CENTRAL, volume=V, concentration=C)
+absorption(adm=1, cmt=1, ka=KA, Tlag=TLAG)
+elimination(cmt=1, V=V, CL=CL)
+iv(adm=2,cmt=1)

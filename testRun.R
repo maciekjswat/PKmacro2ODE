@@ -12,7 +12,7 @@ cat("\014")
 
 # ----------- HOW TO CHOSE A MODEL FROM 'macroSets' FOLDER ------------
 # CHOOSE ONE OF THE ADVAN's: advan1/2/3/4/10/11/12.txt
-#inputMacro <- readLines('macroSets/advan12.txt', n = -1)
+inputMacro <- readLines('macroSets/advan2.txt', n = -1)
 # OR few more complex cases
 #inputMacro <- readLines('macroSets/oneCompWithEffect.txt', n = -1)
 #inputMacro <- readLines('macroSets/example9.txt', n = -1)
@@ -23,7 +23,10 @@ cat("\014")
 #inputMacro <- readLines('macroSets/example_complex3.txt', n = -1)
 #inputMacro <- readLines('macroSets/complexTest.txt', n = -1)
 #inputMacro <- readLines('macroSets/exampleC2.txt', n = -1)
-inputMacro <- readLines('macroSets/useCase7.txt', n = -1)
+#inputMacro <- readLines('macroSets/useCase7.txt', n = -1)
+#inputMacro <- readLines('macroSets/useCase7_Niels.txt', n = -1)
+#inputMacro <- readLines('macroSets/test2.txt', n = -1)
+inputMacro <- readLines('macroSets/useCase3.txt', n = -1)
 
 # empty list - for macros
 m <- list(); mainMacros <- list(); otherMacros <- list(); ODE <- list();

@@ -1,0 +1,94 @@
+<input id="userInput" type="text"/>
+<p id="translation">no translation</p>
+<input type="button" value="Go" onclick="myfunc()"/>
+
+
+function extractMain( inputString, mainMacros )
+{
+/*  var ms = new Array()
+  for (i = 0; i != inputString.length; i++)
+  {
+    ms[i] = string.replace(/ /g,'');
+    m_name = extractName(ms[i]);
+  }
+    return m_name;*/
+    
+    blub = inputString.replace(/ /g,'');
+    m_name = extractName(blub);
+    return m_name;
+    
+    if (m_name == 'compartment' || m_name == 'peripheral') {
+      mainMacros <- c(mainMacros, ms[i]);
+    }
+
+}
+
+
+function extractName( inputString )
+{
+    blub = inputString.split("(")
+	macroName = blub[0];
+	
+	return macroName;
+}
+
+
+
+/****************************************/
+function translate(myInput)
+{
+    var mainMacros = new Array()
+    myOutput = extractMain( myInput, mainMacros )
+    
+    return myOutput
+}
+
+/****************************************/
+function myfunc()
+{
+    /*  document.getElementById("translation").innerHTML =
+    translate(document.getElementById("userInput").value);*/
+    blub = "compartment(cmt=1, amount=Ac, volume=V, concentration=C)"
+    
+    document.getElementById("translation").innerHTML = translate(blub);
+}
+
+
+
+
+
+/*
+<p id="macro">compartment(cmt=1, amount=Ac, volume=V, concentration=C)</p>
+
+function extractMainMacros(macroInput)
+{
+  var mainMacros = new Array(); 
+  var macros = splitIntoMacros(macroInput)
+  
+  for (i = 0; i != macros.length; i++)
+  {
+    if (macros[i].name == "m1")
+      mainMacros[mainMacros.Length] = macros[i];
+  }
+}
+*/
+
+/*
+function upperCase(macroInput)
+{
+    upper = macroInput.toUpperCase();
+    return upper;
+}
+
+function translate(myInput)
+{
+  myOutput = upperCase(myInput);
+  
+  return myOutput;
+}
+
+function myfunc()
+{
+  document.getElementById("translation").innerHTML = translate(document.getElementById("userInput").value);
+}
+*/
